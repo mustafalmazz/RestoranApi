@@ -54,15 +54,15 @@ namespace RestoranApi.WebApi.Controllers
         [HttpPut]
         public IActionResult UpdateContact(UpdateContactDto updateContactDto)
         {
-            Contact contact = new Contact()
-            {
-                Id = updateContactDto.Id,
-                MapLocation = updateContactDto.MapLocation,
-                Address = updateContactDto.Address,
-                OpenHours = updateContactDto.OpenHours,
-                Email = updateContactDto.Email,
-                Phone = updateContactDto.Phone
-            };
+            Contact contact = new Contact();
+            contact.Id = updateContactDto.Id;
+            contact.MapLocation = updateContactDto.MapLocation;
+            contact.Address = updateContactDto.Address;
+            contact.OpenHours = updateContactDto.OpenHours;
+            contact.Email = updateContactDto.Email;
+            contact.Phone = updateContactDto.Phone;
+            _context.Contacts.Update(contact);
+            return Ok("İşlem Başarılı!!");
         }
     }
 }
