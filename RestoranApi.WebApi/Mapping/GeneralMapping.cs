@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RestoranApi.WebApi.Dtos.FeatureDtos;
+using RestoranApi.WebApi.Dtos.MessageDtos;
 using RestoranApi.WebApi.Entities;
 
 namespace RestoranApi.WebApi.Mapping
@@ -12,6 +13,11 @@ namespace RestoranApi.WebApi.Mapping
             CreateMap<Feature,CreateFeatureDto>().ReverseMap();
             CreateMap<Feature,UpdateFeatureDto>().ReverseMap();
             CreateMap<Feature,GetByIdFeature>().ReverseMap();
+
+            CreateMap<Message, ResultMessageDto>().ReverseMap();
+            CreateMap<Message, CreateMessageDto>().ReverseMap();
+            CreateMap<Message, UpdateMessageDto>().ReverseMap();
+            CreateMap<Message, GetByIdMessage>().ReverseMap();
         }
     }
 }

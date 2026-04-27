@@ -50,5 +50,13 @@ namespace RestoranApi.WebApi.Controllers
             var find = _context.Features.Find(id);
             return Ok(_mapper.Map<GetByIdFeature>(find));
         }
+        [HttpPut]
+        public IActionResult UpdateFeature(UpdateFeatureDto updateFeatureDto)
+        {
+            var find = _mapper.Map<Feature>(updateFeatureDto);
+            _context.Features.Update(find);
+
+            return Ok("İşlem Başarılı");
+        }
     }
 }
