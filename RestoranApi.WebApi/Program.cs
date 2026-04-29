@@ -12,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApiContext>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IValidator<Product>, ProductValidator>();
+builder.Services.AddCors(opt =>
+    opt.AddDefaultPolicy(p =>
+        p.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+
+// app.UseCors(); — app.UseRouting()'dan sonra
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -27,7 +32,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 

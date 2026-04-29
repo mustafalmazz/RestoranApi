@@ -21,7 +21,7 @@ namespace RestoranApi.WebApi.Controllers
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult CreateChef(Chef chef)
+        public IActionResult CreateChef([FromBody] Chef chef)
         {
             _context.Chefs.Add(chef);
             _context.SaveChanges();
@@ -42,7 +42,7 @@ namespace RestoranApi.WebApi.Controllers
             return Ok(find);
         }
         [HttpPut]
-        public IActionResult UpdateChef(Chef chef)
+        public IActionResult UpdateChef([FromBody] Chef chef)
         {
             var find = _context.Chefs.Find(chef.ChefId);
             _context.Chefs.Update(chef);
